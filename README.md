@@ -19,7 +19,7 @@ By default, `mode: all` uploads the app and runs the defined CI group in a singl
 ## Usage
 
 ```yaml
-- uses: tester-army/mobile-github-action@v1
+- uses: e2e-inc/mobile-github-action@v1
   with:
     app_path: path/to/your.app
     platform: ios
@@ -46,7 +46,7 @@ jobs:
           name: my-app
           path: .build/
 
-      - uses: tester-army/mobile-github-action@v1
+      - uses: e2e-inc/mobile-github-action@v1
         id: tests
         with:
           app_path: .build/my-app.app
@@ -81,7 +81,7 @@ jobs:
           name: my-app
           path: .build/
 
-      - uses: tester-army/mobile-github-action@v1
+      - uses: e2e-inc/mobile-github-action@v1
         id: upload
         with:
           mode: upload
@@ -93,7 +93,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: upload
     steps:
-      - uses: tester-army/mobile-github-action@v1
+      - uses: e2e-inc/mobile-github-action@v1
         id: defined
         with:
           mode: test
@@ -110,7 +110,7 @@ jobs:
     needs: upload
     if: ${{ github.event_name == 'pull_request' && vars.TESTERARMY_DYNAMIC_AGENT_ENABLED == 'true' }}
     steps:
-      - uses: tester-army/mobile-github-action@v1
+      - uses: e2e-inc/mobile-github-action@v1
         id: dynamic
         with:
           mode: dynamic_agent
@@ -127,7 +127,7 @@ In split-job workflows, `mode: test` never deletes the supplied `app_id` by defa
 ### iOS example
 
 ```yaml
-- uses: tester-army/mobile-github-action@v1
+- uses: e2e-inc/mobile-github-action@v1
   with:
     app_path: .build/my-app.app
     platform: ios
@@ -139,7 +139,7 @@ In split-job workflows, `mode: test` never deletes the supplied `app_id` by defa
 ### Android example
 
 ```yaml
-- uses: tester-army/mobile-github-action@v1
+- uses: e2e-inc/mobile-github-action@v1
   with:
     app_path: app/build/outputs/apk/debug/app-debug.apk
     platform: android
